@@ -179,6 +179,8 @@ fn discover() -> bool {
 }
 
 fn main() {
+    // Local source patches must invalidate the bundled C++ build.
+    println!("cargo:rerun-if-changed=HiGHS/highs");
     println!("cargo:rerun-if-env-changed=CARGO_CFG_TARGET_FEATURE");
 
     let crt_static = target_has_feature("crt-static");
